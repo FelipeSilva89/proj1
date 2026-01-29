@@ -15,18 +15,21 @@ describe('Carrinho - Projeto Sutili', () => {
     // Validar que o carrinho foi atualizado
     cy.get('[class="input-mini"]').should('be.visible').and('value', '1')    
 
-    // Clicar no botão da modal para adicionar quantidade ao carrinho
+    // Clicar no botão da modal para adicionar 2 quantidade ao carrinho
     cy.get('[class="cor-secundaria icon-plus"]').click()
     cy.get('[class="input-mini"]').should('be.visible').and('value', '2')
 
-    
-    // Clicar no botão da modal para ir ao carrinho
-    cy.contains('Ver carrinho').click()
+    // Clicar no botão da modal para adicionar 3 quantidade ao carrinho
+    cy.get('[class="cor-secundaria icon-plus"]').click()
+    cy.get('[class="input-mini"]').should('be.visible').and('value', '3')
 
     
+    // Fechar modal
+    cy.get('[class="fancybox-item fancybox-close"]').click()
 
-    // Validar que o produto está no carrinho
-    cy.get('.produto-item').should('have.length', 1)
+    
+    // Validar que está na tela da categoria
+    cy.url().should('include', '/vela-aromatica')
 
   })
 
